@@ -13,10 +13,9 @@ $database = new Database();
 $db = $database->getConnection();
 
 // 3. Mengambil data spesifik menggunakan method dari masing-masing class anak
-// Pastikan nama method di class anak Anda sudah disesuaikan menjadi seperti di bawah ini
-$listReguler   = PendaftaranReguler::getDaftarReguler($db);
-$listPrestasi  = PendaftaranPrestasi::getDaftarPrestasi($db);
-$listKedinasan = PendaftaranKedinasan::getDaftarKedinasan($db);
+$listReguler   = PendaftaranReguler::ambilDataReguler($db);
+$listPrestasi  = PendaftaranPrestasi::ambilDataPrestasi($db);
+$listKedinasan = PendaftaranKedinasan::ambilDataKedinasan($db);
 ?>
 
 <!DOCTYPE html>
@@ -67,8 +66,7 @@ $listKedinasan = PendaftaranKedinasan::getDaftarKedinasan($db);
                         <td class="text-right">Rp <?= number_format($reguler->hitungTotalBiaya(), 0, ',', '.'); ?></td>
                         <td class="text-right"><strong>Rp <?= number_format($reguler->hitungTotalBiaya(), 0, ',', '.'); ?></strong></td>
                     </tr>
-                <?php endwith; ?>
-            <?php endif; ?>
+                <?php endforeach; ?> <?php endif; ?>
         </tbody>
     </table>
 
@@ -100,8 +98,7 @@ $listKedinasan = PendaftaranKedinasan::getDaftarKedinasan($db);
                         <td class="text-right">Rp <?= number_format($prestasi->hitungTotalBiaya() + 50000, 0, ',', '.'); ?></td>
                         <td class="text-right" style="color: #27ae60;"><strong>Rp <?= number_format($prestasi->hitungTotalBiaya(), 0, ',', '.'); ?></strong></td>
                     </tr>
-                <?php endwith; ?>
-            <?php endif; ?>
+                <?php endforeach; ?> <?php endif; ?>
         </tbody>
     </table>
 
@@ -133,8 +130,7 @@ $listKedinasan = PendaftaranKedinasan::getDaftarKedinasan($db);
                         <td class="text-right">Rp <?= number_format($kedinasan->hitungTotalBiaya() / 1.25, 0, ',', '.'); ?></td>
                         <td class="text-right" style="color: #d35400;"><strong>Rp <?= number_format($kedinasan->hitungTotalBiaya(), 0, ',', '.'); ?></strong></td>
                     </tr>
-                <?php endwith; ?>
-            <?php endif; ?>
+                <?php endforeach; ?> <?php endif; ?>
         </tbody>
     </table>
 
